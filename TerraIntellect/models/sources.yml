@@ -8,3 +8,4 @@ sources:
     schema: public
     tables:
       - name: clients
+      - name: projects

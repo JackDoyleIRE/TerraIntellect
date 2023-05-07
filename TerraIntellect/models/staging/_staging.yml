@@ -9,3 +9,9 @@ models:
         tests:
           - unique
           - not_null
+  - name: stg_projects
+    columns:
+      - name: project_id
+        tests:
+          - unique
+          - not_null
