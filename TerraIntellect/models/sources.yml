@@ -9,3 +9,4 @@ sources:
     tables:
       - name: clients
       - name: projects
+      - name: partners

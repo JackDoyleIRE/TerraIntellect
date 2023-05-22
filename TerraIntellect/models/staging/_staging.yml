@@ -17,3 +17,10 @@ models:
         tests:
           - unique
           - not_null
+  - name: stg_partners
+    columns: 
+      - name: partner_id
+        description: The id of the commercial partner
+        tests:
+          - unique
+          - not_null
