@@ -10,3 +10,4 @@ sources:
       - name: clients
       - name: projects
       - name: partners
+      - name: sales
