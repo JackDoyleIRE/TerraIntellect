@@ -12,3 +12,4 @@ sources:
       - name: partners
       - name: sales
       - name: finance
+      - name: logistics
