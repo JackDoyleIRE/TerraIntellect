@@ -24,3 +24,10 @@ models:
         tests:
           - unique
           - not_null
+  - name: stg_sales
+    columns: 
+      - name: sale_id
+        description: ID of the sale
+        tests:
+          - unique
+          - not_null
