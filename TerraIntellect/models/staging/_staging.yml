@@ -34,7 +34,14 @@ models:
   - name: stg_finance
     columns: 
       - name: finance_id
-        description: ID of the trasnaction
+        description: ID of the transaction
+        tests:
+          - unique
+          - not_null
+  - name: stg_logistics
+    columns: 
+      - name: logistics_id
+        description: ID of the transport method for data collection
         tests:
           - unique
           - not_null
