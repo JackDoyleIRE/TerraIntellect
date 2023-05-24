@@ -31,3 +31,10 @@ models:
         tests:
           - unique
           - not_null
+  - name: stg_finance
+    columns: 
+      - name: finance_id
+        description: ID of the trasnaction
+        tests:
+          - unique
+          - not_null
