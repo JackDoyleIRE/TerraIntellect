@@ -1,0 +1,10 @@
+# sources.yml
+
+version: 2
+
+sources:
+  - name: raw_erp_data
+    database: dbt-transformations-402811
+    tables:
+      - name: sales
+

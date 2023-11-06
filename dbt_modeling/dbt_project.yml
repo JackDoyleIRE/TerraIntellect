@@ -2,12 +2,12 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'TerraIntellect'
+name: 'dbt_modeling'
 version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'TerraIntellect'
+profile: 'dbt_modeling'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -24,6 +24,13 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+########## Data Diff ################
+vars:
+  data_diff:
+    prod_database: my_default_database # default database for the prod target
+    prod_schema: my_default_schema # default schema for the prod target
+    prod_custom_schema: PROD_<custom_schema> # Optional: see dropdown below
+
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -32,10 +39,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  TerraIntellect:
+  dbt_modeling:
     # Config indicated by + and applies to all files under models/example/
     clients:
-      materialized: view
+      +materialized: table
+      config:
+        materialized: 'table'
+
+
+
+
 
  
       

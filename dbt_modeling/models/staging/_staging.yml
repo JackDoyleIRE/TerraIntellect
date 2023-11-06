@@ -1,0 +1,13 @@
+# models/staging/staging.yml
+
+version: 2
+
+models:
+  - name: stg_sales
+    columns:
+      - name: sale_id
+        description: The id of the sale 
+        tests:
+          - unique
+          - not_null
+

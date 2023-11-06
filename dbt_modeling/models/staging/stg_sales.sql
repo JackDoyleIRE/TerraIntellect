@@ -7,7 +7,7 @@
 }}
 
 WITH source AS (
-    SELECT * FROM {{ source('raw', 'sales') }}
+    SELECT * FROM {{ source('raw_erp_data', 'sales') }}
 )
 
 SELECT
