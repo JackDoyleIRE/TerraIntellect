@@ -41,10 +41,9 @@ vars:
 models:
   dbt_modeling:
     # Config indicated by + and applies to all files under models/example/
-    clients:
-      +materialized: table
-      config:
-        materialized: 'table'
+    sales:
+      materialized: table
+
 
 
 
