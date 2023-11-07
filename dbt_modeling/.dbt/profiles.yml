@@ -1,0 +1,26 @@
+dbt_modeling:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('DBT_GOOGLE_PROJECT_DEV') }}"
+      dataset: "{{ env_var('DBT_GOOGLE_DATASET_DEV') }}"
+      threads: 1 
+      location: europe-west9
+      timeout_seconds: 300
+    prod:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('DBT_GOOGLE_PROJECT_PROD') }}"
+      dataset: "{{ env_var('DBT_GOOGLE_DATASET_PROD') }}"
+      keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
+      threads: 1
+      location: europe-west9
+      timeout_seconds: 300
+
+
+
+
+
+
