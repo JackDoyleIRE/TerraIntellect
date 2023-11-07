@@ -1,0 +1,44 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  deploy:
+    env:
+      DBT_GOOGLE_BIGQUERY_KEYFILE: ./dbt-service-account.json
+
+      DBT_GOOGLE_PROJECT_PROD: ${{ secrets.DBT_GOOGLE_PROJECT_PROD}}
+      DBT_GOOGLE_DATASET_PROD: ${{ secrets.DBT_GOOGLE_DATASET_PROD}}
+    name: production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_ley: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE_PROD}}
+
+      - name: Authenticate using service account
+        run: 'echo "KEYFILE" > ./dbt-service-account.json'
+        shell: bash
+        env:
+          KEYFILE: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE_PROD}}
+      
+      - name: Install dependencies
+        run:
+          pip install --upgrade pip
+          pip install dbt-bigquery==1.5.0
+          dbt deps --profiles-dir .dbt/ --target prod
+
+      - name: Build
+        run:
+          dbt build --target prod --profiles-dir .dbt/
