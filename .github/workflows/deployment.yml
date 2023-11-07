@@ -37,6 +37,7 @@ jobs:
         run:
           pip install --upgrade pip
           pip install dbt-bigquery==1.5.0
+          dbt deps --profiles-dir dbt_modeling/.dbt/ --target prod
           
 
       - name: Build
