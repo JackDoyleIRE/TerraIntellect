@@ -42,4 +42,4 @@ jobs:
 
       - name: Build
         run:
-          dbt build --target prod --profiles-dir dbt_modeling/.dbt/
+          dbt build --target prod --profiles-dir dbt_modeling/.dbt/ --project-dir dbt_modeling/
